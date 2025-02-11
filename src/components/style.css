@@ -1,0 +1,132 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.aisp {
+  align-items: space-between;
+}
+
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  z-index: 100;
+  background-color: hsla(0, 0%, 100%, 0.7);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: background-color 0.2s, color 0.2s;
+}
+.pagePadding {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.navInner {
+  position: relative;
+  display: flex;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  align-items: center;
+  border-bottom: 1px solid rgba(2, 23, 53, 0.1);
+  transition: border-color 0.2s;
+  min-height: 28px;
+}
+.name {
+  font-size: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 2px solid #ddd; /* Blinking cursor */
+  padding-right: 5px;
+  font-weight: 500;
+}
+
+/* Gradient flowing effect on hover */
+.name:hover {
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff7300,
+    #ead80e,
+    #4bef0b,
+    #03fae9,
+    #0047ff,
+    #7a00ff
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 2s infinite linear;
+  cursor: pointer;
+}
+.no-border {
+  border-right: none;
+}
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Shake animation */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-3px);
+  }
+  40% {
+    transform: translateX(3px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Apply shake animation */
+.shaking {
+  display: inline-block; /* Needed for transform to work */
+  animation: shake 0.3s ease-in-out;
+}
+
+.iconContainer {
+  width: 120px;
+  gap: 20px;
+  flex-direction: row;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.no-decoration {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex; /* Keeps icon and text aligned */
+  align-items: center;
+  gap: 5px; /* Adds space between icon and text */
+}
