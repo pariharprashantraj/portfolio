@@ -69,12 +69,66 @@ const Header = () => {
     }
   };
 
+  const renderConnectIcons = () => (
+    <>
+      <div className={`flex ${isShaking ? "shaking" : ""}`}>
+        <a
+          href="https://www.linkedin.com/in/prashant-raj-parihar-872188103/"
+          target="blank"
+          className="no-decoration"
+        >
+          <FontAwesomeIcon
+            icon={faLinkedin}
+            color="#0077B5"
+            style={{ fontSize: "24px" }}
+            className="pointer"
+          />
+        </a>
+      </div>
+      <div className={`flex ${isShaking ? "shaking" : ""}`}>
+        <a href="https://wa.me/8989098296" target="blank">
+          <FontAwesomeIcon
+            icon={faSquareWhatsapp}
+            color="#25D366"
+            style={{ fontSize: "26px" }}
+          />
+        </a>
+      </div>
+      <div className={`flex ${isShaking ? "shaking" : ""}`}>
+        <a href="tel:+918989098296" target="blank">
+          <FontAwesomeIcon
+            icon={faSquarePhone}
+            color="#E50914"
+            style={{ fontSize: "26px" }}
+          />
+        </a>
+      </div>
+      <div className="flex pointer ">
+        <a
+          href="/resume.pdf"
+          download="PrashantRajParihar_SeniorFrontendDeveloper_5YearsExperience_Resume.pdf"
+          className="no-decoration"
+        >
+          <div className="flex">
+            <div className={`${isShaking ? "shaking" : ""}`}>
+              <FontAwesomeIcon
+                icon={faDownload}
+                color="#ccc"
+                style={{ fontSize: "18px", paddingRight: "4px" }}
+              />{" "}
+            </div>
+            Resume
+          </div>
+        </a>
+      </div>
+    </>
+  );
   return (
     <>
       <header className="nav">
         <div className="pagePadding">
           <div className="container">
-            <div className="navInner flex jcsb portfolioHeader">
+            <div className="navInner flex jcsb mc">
               <div
                 className={`name ${!showBorder ? "no-border" : ""}`}
                 onMouseEnter={handleMouseEnter}
@@ -82,63 +136,23 @@ const Header = () => {
               >
                 {displayText}
               </div>
-
-              <div className="flex iconContainer">
-                <div className={`flex ${isShaking ? "shaking" : ""}`}>
-                  <a
-                    href="https://www.linkedin.com/in/prashant-raj-parihar-872188103/"
-                    target="blank"
-                    className="no-decoration"
-                  >
-                    <FontAwesomeIcon
-                      icon={faLinkedin}
-                      color="#0077B5"
-                      style={{ fontSize: "24px" }}
-                      className="pointer"
-                    />
-                  </a>
-                </div>
-                <div className={`flex ${isShaking ? "shaking" : ""}`}>
-                  <a href="https://wa.me/8989098296" target="blank">
-                    <FontAwesomeIcon
-                      icon={faSquareWhatsapp}
-                      color="#25D366"
-                      style={{ fontSize: "26px" }}
-                    />
-                  </a>
-                </div>
-                <div className={`flex ${isShaking ? "shaking" : ""}`}>
-                  <a href="tel:+918989098296" target="blank">
-                    <FontAwesomeIcon
-                      icon={faSquarePhone}
-                      color="#E50914"
-                      style={{ fontSize: "26px" }}
-                    />
-                  </a>
-                </div>
-                <div className="flex pointer ">
-                  <a
-                    href="/resume.pdf"
-                    download="PrashantRajParihar_SeniorFrontendDeveloper_5YearsExperience_Resume.pdf"
-                    className="no-decoration"
-                  >
-                    <div className="flex">
-                      <div className={`${isShaking ? "shaking" : ""}`}>
-                        <FontAwesomeIcon
-                          icon={faDownload}
-                          color="#ccc"
-                          style={{ fontSize: "18px", paddingRight: "4px" }}
-                        />{" "}
-                      </div>
-                      Resume
-                    </div>
-                  </a>
-                </div>
-              </div>
+              <div className="flex iconContainer">{renderConnectIcons()}</div>
             </div>
           </div>
         </div>
       </header>
+
+      <footer className="nav navFooter footer">
+        <div className="pagePadding w100">
+          <div className="container">
+            <div className="navInner footerNavInner flex ">
+              <div className="flex iconContainer footer">
+                {renderConnectIcons()}
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };

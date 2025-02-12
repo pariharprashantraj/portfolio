@@ -24,6 +24,12 @@
   backdrop-filter: blur(12px);
   transition: background-color 0.2s, color 0.2s;
 }
+
+.navFooter {
+  bottom: 0;
+  top: auto;
+}
+
 .pagePadding {
   padding-right: 20px;
   padding-left: 20px;
@@ -42,6 +48,10 @@
   border-bottom: 1px solid rgba(2, 23, 53, 0.1);
   transition: border-color 0.2s;
   min-height: 28px;
+}
+
+.footerNavInner {
+  border-top: 1px solid rgba(2, 23, 53, 0.1);
 }
 .name {
   font-size: 20px;
@@ -106,6 +116,10 @@
   }
 }
 
+.footer {
+  display: none;
+}
+
 /* Apply shake animation */
 .shaking {
   display: inline-block; /* Needed for transform to work */
@@ -128,4 +142,21 @@
   display: inline-flex; /* Keeps icon and text aligned */
   align-items: center;
   gap: 5px; /* Adds space between icon and text */
+}
+
+.w100 {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  /* Center the name at the top */
+  .iconContainer {
+    display: none;
+  }
+  .footer {
+    display: flex;
+  }
+  .mc {
+    justify-content: center;
+  }
 }
