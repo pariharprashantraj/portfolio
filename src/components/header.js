@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLinkedin,
+  faSquareWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
+import { faDownload, faSquarePhone } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   const fullText = "Prashant Raj Parihar";
   const [displayText, setDisplayText] = useState("");
@@ -81,7 +84,7 @@ const Header = () => {
               </div>
 
               <div className="flex iconContainer">
-                <div className={isShaking ? "shaking" : ""}>
+                <div className={`flex ${isShaking ? "shaking" : ""}`}>
                   <a
                     href="https://www.linkedin.com/in/prashant-raj-parihar-872188103/"
                     target="blank"
@@ -92,6 +95,24 @@ const Header = () => {
                       color="#0077B5"
                       style={{ fontSize: "24px" }}
                       className="pointer"
+                    />
+                  </a>
+                </div>
+                <div className={`flex ${isShaking ? "shaking" : ""}`}>
+                  <a href="https://wa.me/8989098296" target="blank">
+                    <FontAwesomeIcon
+                      icon={faSquareWhatsapp}
+                      color="#25D366"
+                      style={{ fontSize: "26px" }}
+                    />
+                  </a>
+                </div>
+                <div className={`flex ${isShaking ? "shaking" : ""}`}>
+                  <a href="tel:+918989098296" target="blank">
+                    <FontAwesomeIcon
+                      icon={faSquarePhone}
+                      color="#E50914"
+                      style={{ fontSize: "26px" }}
                     />
                   </a>
                 </div>

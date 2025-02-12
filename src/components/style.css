@@ -113,7 +113,6 @@
 }
 
 .iconContainer {
-  width: 120px;
   gap: 20px;
   flex-direction: row;
 }
