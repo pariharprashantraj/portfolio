@@ -25,21 +25,22 @@ const Notes = () => {
       {notesData.map((note, index) => {
         const isActive = index === activeIndex;
         const isPrevious = index < activeIndex;
+        const isNext = index > activeIndex;
 
         return (
           <div
             key={index}
             className={`note ${
-              isActive ? "active" : isPrevious ? "previous" : "next"
+              isActive ? "active" : isPrevious ? "previous" : "hidden"
             }`}
             style={{
               transform: isActive
                 ? "translate(-50%, -50%) scale(1)"
                 : isPrevious
-                ? `translate(-50%, -40%) scale(0.85)` // Moves down and shrinks
-                : `translate(-50%, 50%) scale(1)`, // Incoming note starts lower
-              zIndex: isActive ? 3 : isPrevious ? 1 : 2, // Active note on top
-              opacity: isPrevious ? 0.6 : 1, // Older notes fade
+                ? `translate(-50%, -60%) scale(0.85)` // Moves up and shrinks
+                : `translate(-50%, 100%) scale(1)`, // Hidden below
+              zIndex: isActive ? 3 : isPrevious ? 1 : -1, // Active note on top
+              opacity: isPrevious ? 0.5 : 1, // Older notes fade
             }}
           >
             <h2>{note}</h2>

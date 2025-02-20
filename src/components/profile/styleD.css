@@ -63,6 +63,16 @@
 }
 
 /* Default state for notes */
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 200px 20px;
+  position: relative;
+  height: 300vh; /* Allow enough space for scrolling */
+}
+
+/* Default state for notes */
 .note {
   width: 500px;
   height: 220px;
@@ -71,9 +81,9 @@
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   position: fixed;
-  top: 70%;
+  top: 70%; /* Initially starts at 70% viewport height */
   left: 50%;
-  transform: translate(-50%, 50%) scale(1);
+  transform: translate(-50%, 100%) scale(1); /* Hidden below */
   transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
   opacity: 0.9;
   z-index: 2;
@@ -81,23 +91,23 @@
 
 /* Fully visible note */
 .note.active {
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1); /* Moves to center */
   opacity: 1;
   z-index: 3; /* Active note on top */
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Previous notes move slightly backward */
+/* Previous notes move upwards and shrink */
 .note.previous {
-  transform: translate(-50%, -40%) scale(0.85);
-  opacity: 0.6;
+  transform: translate(-50%, -60%) scale(0.85);
+  opacity: 0.5;
   z-index: 1; /* Push back */
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Next notes come from below */
-.note.next {
-  transform: translate(-50%, 50%) scale(1);
-  opacity: 1;
-  z-index: 2; /* Stacks between active and previous */
+/* Hidden notes (yet to appear) */
+.note.hidden {
+  transform: translate(-50%, 100%) scale(1); /* Keep them below */
+  opacity: 0;
+  z-index: -1;
 }
