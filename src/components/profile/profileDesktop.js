@@ -9,7 +9,7 @@ function ProfileDesktop() {
           <div className="gradient-bg"></div>
           <img
             src="/profilePhoto.png"
-            alt="Profile Image"
+            alt="Profile_Image"
             className="circular-border"
           />
         </div>
