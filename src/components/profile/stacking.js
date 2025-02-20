@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./styleD.css";
 
-const notesData = ["Note 1", "Note 2", "Note 3", "Note 4", "Note 5"];
+const notesData = ["Note 1", "Note 2", "Note 3", "Note 4", "Note 5", "Note 6"];
 
 const Notes = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [firstNotePosition, setFirstNotePosition] = useState(130); // Starts at 70%
+  const [firstNotePosition, setFirstNotePosition] = useState(130);
+  const [allNotesVisible, setAllNotesVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
 
       if (scrollPosition < 300) {
-        // Move the first note gradually up to 20%
         const newTop = Math.max(20, 70 - scrollPosition / 10);
         setFirstNotePosition(newTop);
       }
@@ -23,6 +23,7 @@ const Notes = () => {
       );
 
       setActiveIndex(newIndex);
+      setAllNotesVisible(newIndex === notesData.length - 1);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -30,7 +31,12 @@ const Notes = () => {
   }, []);
 
   return (
-    <div className="notes-container">
+    <div
+      className="notes-container"
+      style={{
+        height: allNotesVisible ? "240vh" : "450vh", // Increase height when all notes are visible
+      }}
+    >
       {notesData.map((note, index) => {
         const isActive = index === activeIndex;
         const isPrevious = index < activeIndex;
@@ -50,10 +56,11 @@ const Notes = () => {
               transform: isActive
                 ? "translate(-50%, -50%) scale(1.1)"
                 : isPrevious
-                ? `translate(-50%, -60%) scale(${0.95 + index * 0.03})` // Moves up and shrinks
-                : `translate(-50%, 180%) scale(1)`, // Hidden below
-              zIndex: isActive ? 3 : isPrevious ? 1 : -1, // Active note on top
-              opacity: isPrevious ? 0.9 : 1, // Older notes fade
+                ? `translate(-50%, -60%) scale(${0.95 + index * 0.03})`
+                : `translate(-50%, 180%) scale(1)`,
+              zIndex: isActive ? 3 : isPrevious ? 1 : -1,
+              opacity: isPrevious ? 0.9 : 1,
+              position: allNotesVisible ? "absolute" : "fixed", // Switch to absolute when all notes are displayed
             }}
           >
             <h2>{note}</h2>
