@@ -1,0 +1,110 @@
+/* General Styles */
+
+/* Full Width Utility */
+.w100 {
+  width: 100%;
+}
+
+/* Profile Section */
+.profile-container {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Glowing Gradient Background */
+.gradient-bg {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(239, 95, 213, 0.5) 0%,
+    rgba(227, 165, 205, 0.5) 40%,
+    rgba(221, 160, 221, 0.5) 70%,
+    rgba(239, 165, 165, 0.9) 100%
+  );
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+/* Image Container */
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+}
+
+/* Profile Image */
+.image-container img {
+  position: relative;
+  z-index: 2;
+  height: 300px;
+  width: 300px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  background-color: #fff;
+  object-fit: cover;
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Image section */
+
+.profile-image {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Default state for notes */
+.note {
+  width: 70%;
+  height: 220px;
+  padding: 20px;
+  background: white;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 100%) scale(1); /* Hidden below */
+  transition: top 0.5s ease, transform 0.5s ease, opacity 0.5s ease,
+    box-shadow 0.5s ease;
+  opacity: 0.9;
+  z-index: 2;
+}
+
+/* Fully visible note */
+.note.active {
+  transform: translate(-50%, -50%) scale(1); /* Moves to center */
+  opacity: 1;
+  z-index: 3; /* Active note on top */
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Previous notes move upwards and shrink */
+.note.previous {
+  transform: translate(-50%, -60%) scale(0.85);
+  opacity: 0.5;
+  z-index: 1; /* Push back */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Hidden notes (yet to appear) */
+.note.hidden {
+  transform: translate(-50%, 100%) scale(1); /* Keep them below */
+  opacity: 0;
+  z-index: -1;
+}
