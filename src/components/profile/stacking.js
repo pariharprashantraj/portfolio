@@ -5,14 +5,23 @@ const notesData = ["Note 1", "Note 2", "Note 3", "Note 4", "Note 5"];
 
 const Notes = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [firstNotePosition, setFirstNotePosition] = useState(70); // Starts at 70%
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
+
+      if (scrollPosition < 300) {
+        // Move the first note gradually up to 20%
+        const newTop = Math.max(20, 70 - scrollPosition / 10);
+        setFirstNotePosition(newTop);
+      }
+
       const newIndex = Math.min(
-        Math.floor(scrollPosition / 300),
+        Math.floor((scrollPosition - 300) / 300),
         notesData.length - 1
       );
+
       setActiveIndex(newIndex);
     };
 
@@ -31,16 +40,20 @@ const Notes = () => {
           <div
             key={index}
             className={`note ${
-              isActive ? "active" : isPrevious ? "previous" : "hidden"
+              isActive ? "hidden" : isPrevious ? "previous" : "hidden"
             }`}
             style={{
+              top:
+                index === 0
+                  ? `${firstNotePosition}%`
+                  : `${firstNotePosition + index * 2}%`,
               transform: isActive
-                ? "translate(-50%, -50%) scale(1)"
+                ? "translate(-50%, -50%) scale(1.1)"
                 : isPrevious
-                ? `translate(-50%, -60%) scale(0.85)` // Moves up and shrinks
+                ? `translate(-50%, -60%) scale(0.95)` // Moves up and shrinks
                 : `translate(-50%, 100%) scale(1)`, // Hidden below
               zIndex: isActive ? 3 : isPrevious ? 1 : -1, // Active note on top
-              opacity: isPrevious ? 0.5 : 1, // Older notes fade
+              opacity: isPrevious ? 0.9 : 1, // Older notes fade
             }}
           >
             <h2>{note}</h2>
