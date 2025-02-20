@@ -1,0 +1,103 @@
+/* General Styles */
+
+/* Full Width Utility */
+.w100 {
+  width: 100%;
+}
+
+/* Profile Section */
+.profile-container {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Glowing Gradient Background */
+.gradient-bg {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(239, 95, 213, 0.5) 0%,
+    rgba(227, 165, 205, 0.5) 40%,
+    rgba(221, 160, 221, 0.5) 70%,
+    rgba(239, 165, 165, 0.9) 100%
+  );
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+/* Image Container */
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+}
+
+/* Profile Image */
+.image-container img {
+  position: relative;
+  z-index: 2;
+  height: 300px;
+  width: 300px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  background-color: #fff;
+  object-fit: cover;
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 200px 20px;
+  position: relative;
+  height: 200vh; /* Allow enough space for scrolling */
+}
+
+/* Default state for notes */
+.note {
+  width: 500px;
+  height: 220px;
+  padding: 20px;
+  background: white;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, 50%) scale(1);
+  transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+  opacity: 0.9;
+  z-index: 2;
+}
+
+/* Fully visible note */
+.note.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 3; /* Active note on top */
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Previous notes move slightly backward */
+.note.previous {
+  transform: translate(-50%, -40%) scale(0.85);
+  opacity: 0.6;
+  z-index: 1; /* Push back */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Next notes come from below */
+.note.next {
+  transform: translate(-50%, 50%) scale(1);
+  opacity: 1;
+  z-index: 2; /* Stacks between active and previous */
+}
