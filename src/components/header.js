@@ -5,69 +5,70 @@ import {
   faLinkedin,
   faSquareWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
+import TypeWriterText from "./typeWriterText";
 import { faDownload, faSquarePhone } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   const fullText = "Prashant Raj Parihar";
-  const [displayText, setDisplayText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
-  const [index, setIndex] = useState(0);
-  const [showBorder, setShowBorder] = useState(true);
+  // const [displayText, setDisplayText] = useState("");
+  // const [isTyping, setIsTyping] = useState(true);
+  // const [index, setIndex] = useState(0);
+  // const [showBorder, setShowBorder] = useState(true);
   const [isShaking, setIsShaking] = useState(false);
-  const [shakeInterval, setShakeInterval] = useState(null);
+  // const [shakeInterval, setShakeInterval] = useState(null);
 
-  useEffect(() => {
-    let typingSpeed = 100;
-    let deletingSpeed = 50;
+  // useEffect(() => {
+  //   let typingSpeed = 100;
+  //   let deletingSpeed = 50;
 
-    const typeEffect = () => {
-      if (isTyping) {
-        if (index < fullText.length) {
-          setDisplayText(fullText.substring(0, index + 1));
-          setIndex((prev) => prev + 1);
-          setShowBorder(true);
-        } else {
-          setShowBorder(false);
-          setTimeout(() => setIsTyping(false), 30000);
-        }
-      } else {
-        if (index > 0) {
-          setDisplayText(fullText.substring(0, index - 1));
-          setIndex((prev) => prev - 1);
-          setShowBorder(true);
-        } else {
-          setShowBorder(false);
-          setTimeout(() => setIsTyping(true), 500);
-        }
-      }
-    };
+  //   const typeEffect = () => {
+  //     if (isTyping) {
+  //       if (index < fullText.length) {
+  //         setDisplayText(fullText.substring(0, index + 1));
+  //         setIndex((prev) => prev + 1);
+  //         setShowBorder(true);
+  //       } else {
+  //         setShowBorder(false);
+  //         setTimeout(() => setIsTyping(false), 30000);
+  //       }
+  //     } else {
+  //       if (index > 0) {
+  //         setDisplayText(fullText.substring(0, index - 1));
+  //         setIndex((prev) => prev - 1);
+  //         setShowBorder(true);
+  //       } else {
+  //         setShowBorder(false);
+  //         setTimeout(() => setIsTyping(true), 500);
+  //       }
+  //     }
+  //   };
 
-    const interval = setTimeout(
-      typeEffect,
-      isTyping ? typingSpeed : deletingSpeed
-    );
+  //   const interval = setTimeout(
+  //     typeEffect,
+  //     isTyping ? typingSpeed : deletingSpeed
+  //   );
 
-    return () => clearTimeout(interval);
-  }, [index, isTyping]);
+  //   return () => clearTimeout(interval);
+  // }, [index, isTyping]);
 
   // Function to start shaking effect
-  const handleMouseEnter = () => {
-    setIsShaking(true);
-    if (!shakeInterval) {
-      const interval = setInterval(() => {
-        setIsShaking((prev) => !prev); // Toggle shaking class
-      }, 300); // Shake every 300ms
-      setShakeInterval(interval);
-    }
-  };
+  // const handleMouseEnter = () => {
+  //   setIsShaking(true);
+  //   if (!shakeInterval) {
+  //     const interval = setInterval(() => {
+  //       setIsShaking((prev) => !prev); // Toggle shaking class
+  //     }, 300); // Shake every 300ms
+  //     setShakeInterval(interval);
+  //   }
+  // };
 
-  // Function to stop shaking effect
-  const handleMouseLeave = () => {
-    setIsShaking(false);
-    if (shakeInterval) {
-      clearInterval(shakeInterval);
-      setShakeInterval(null);
-    }
-  };
+  // // Function to stop shaking effect
+  // const handleMouseLeave = () => {
+  //   setIsShaking(false);
+  //   if (shakeInterval) {
+  //     clearInterval(shakeInterval);
+  //     setShakeInterval(null);
+  //   }
+  // };
 
   const renderConnectIcons = () => (
     <>
@@ -129,13 +130,18 @@ const Header = () => {
         <div className="pagePadding">
           <div className="container">
             <div className="navInner flex jcsb mc">
-              <div
+              <TypeWriterText
+                text={fullText}
+                setIsShaking={setIsShaking}
+                fs="24px"
+              />
+              {/* <div
                 className={`name ${!showBorder ? "no-border" : ""}`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 {displayText}
-              </div>
+              </div> */}
               <div className="flex iconContainer">{renderConnectIcons()}</div>
             </div>
           </div>

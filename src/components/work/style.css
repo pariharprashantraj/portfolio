@@ -1,0 +1,62 @@
+.experience-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 3px;
+  border-left: 3px solid crimson; /* Vertical line */
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Circle with Tick */
+.timeline-marker {
+  position: absolute;
+  left: -18px; /* Adjust based on circle size */
+  width: 24px;
+  height: 24px;
+  background-color: crimson;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.timeline-content {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 30px;
+  width: 100%;
+}
+
+.timeline-content h3 {
+  color: crimson;
+  margin: 0;
+}
+
+.timeline-content h4 {
+  margin: 5px 0;
+}
+
+.timeline-content p {
+  font-style: italic;
+  color: gray;
+}
+
+.timeline-content ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./styleD.css";
+import "./style.css";
 
-const notesData = ["Note 1", "Note 2", "Note 3", "Note 4", "Note 5", "Note 6"];
-
-const Notes = () => {
+const Notes = ({ notesData = [] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [firstNotePosition, setFirstNotePosition] = useState(130);
   const [allNotesVisible, setAllNotesVisible] = useState(false);
@@ -63,8 +61,10 @@ const Notes = () => {
               position: allNotesVisible ? "absolute" : "fixed", // Switch to absolute when all notes are displayed
             }}
           >
-            <h2>{note}</h2>
-            <p>This is a sample note with stacking effect.</p>
+            <div className="notes-heading">{notesData[index].heading}</div>
+            <div className="notes-description">
+              {notesData[index].description}
+            </div>
           </div>
         );
       })}

@@ -7,7 +7,7 @@
 
 /* Profile Section */
 .profile-container {
-  height: 40vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,4 +107,48 @@
   transform: translate(-50%, 100%) scale(1); /* Keep them below */
   opacity: 0;
   z-index: -1;
+}
+
+.notes-heading {
+  padding: 20px 10px 0 20px;
+  color: #666;
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.notes-description {
+  padding: 40px 20px;
+  color: #777;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.main-text {
+  font-size: 24px;
+  color: #666;
+  padding: 40px 100px;
+}
+
+@media (max-width: 768px) {
+  /* Center the name at the top */
+  .main-text {
+    font-size: 24px;
+    color: #666;
+    padding: 40px 20px;
+  }
+  .notes-heading {
+    padding: 5px 10px;
+    color: #666;
+    font-weight: 600;
+    font-size: 24px;
+    text-align: left;
+  }
+
+  .notes-description {
+    padding: 5px 10px;
+    color: #777;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: left;
+  }
 }
