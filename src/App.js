@@ -1,5 +1,5 @@
 import "./App.css";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 import Header from "./components/header";
 import Profile from "./components/profile/profile";
 import Work from "./components/work/index";

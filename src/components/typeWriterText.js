@@ -43,7 +43,7 @@ const TypeWriterText = ({
     );
 
     return () => clearTimeout(interval);
-  }, [index, isTyping]);
+  }, [index, isTyping, text]);
   const handleMouseEnter = () => {
     setIsShaking(true);
     if (!shakeInterval) {

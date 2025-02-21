@@ -26,7 +26,7 @@ const Notes = ({ notesData = [] }) => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [notesData]);
 
   return (
     <div
@@ -38,7 +38,6 @@ const Notes = ({ notesData = [] }) => {
       {notesData.map((note, index) => {
         const isActive = index === activeIndex;
         const isPrevious = index < activeIndex;
-        const isNext = index > activeIndex;
 
         return (
           <div
